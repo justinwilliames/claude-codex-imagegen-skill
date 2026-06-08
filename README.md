@@ -46,7 +46,7 @@ Claude will use the skill, call the wrapper script, and let Codex handle the ima
 ## Repo layout
 
 ```text
-claude-codex-image-gen-bridge/
+claude-codex-imagegen-skill/
 ├── SKILL.md
 ├── LICENSE
 ├── README.md
