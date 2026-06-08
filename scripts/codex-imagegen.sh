@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#
+# The Codex wrapper is adapted from tomc98/claude-code-codex-skill
+# by Thomas Csere (MIT). https://github.com/tomc98/claude-code-codex-skill
 
 set -eo pipefail
 

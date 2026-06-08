@@ -1,4 +1,4 @@
-# claude-codex-image-gen-bridge
+# claude-codex-imagegen-skill
 
 A self-contained Claude Code skill that lets Claude generate and edit images by delegating the actual image work to OpenAI Codex.
 
@@ -24,7 +24,7 @@ The skill is self-contained at the Claude-skill level, but it still needs a work
 Clone the repo directly into your Claude skills directory under the skill name `codex-imagegen`:
 
 ```bash
-git clone https://github.com/justinwilliames/claude-codex-image-gen-bridge.git \
+git clone https://github.com/justinwilliames/claude-codex-imagegen-skill.git \
   ~/.claude/skills/codex-imagegen
 chmod +x ~/.claude/skills/codex-imagegen/scripts/codex-imagegen.sh
 ```
@@ -59,6 +59,10 @@ claude-codex-image-gen-bridge/
 - Project-bound outputs should be copied into a real destination directory rather than left only under `~/.codex/generated_images/...`.
 - The wrapper supports repeatable `--image` arguments for reference images or edit targets.
 
+## Credits
+
+The Codex wrapper (`scripts/codex-imagegen.sh`) is adapted from [tomc98/claude-code-codex-skill](https://github.com/tomc98/claude-code-codex-skill) by Thomas Csere (MIT).
+
 ## License
 
-MIT.
+MIT — see [LICENSE](LICENSE).
