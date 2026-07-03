@@ -1,3 +1,5 @@
+> **⚠️ Moved (2026-07-03):** now maintained in github.com/justinwilliames/claude-skills (codex-imagegen/) — this repo is archived.
+
 # claude-codex-imagegen-skill
 
 A self-contained Claude Code skill that lets Claude generate and edit images by delegating the actual image work to OpenAI Codex.
