@@ -39,6 +39,12 @@ If either requirement is missing, say exactly what is missing and stop there.
 - SVG, icon, or logo-system work that should stay vector-native
 - HTML/CSS mockups that are better expressed as code
 - Simple diagrams or wireframes that should be drawn directly in code or Mermaid
+- **On-brand email headers / heroes that must match a brand precisely** (exact palette,
+  type, logo) — Codex raster approximates colour and mangles text/logos. Route these to
+  the `claude-design-email-header` skill, which drives Anthropic's Claude Design
+  (HTML/SVG + your real design system) and rasterizes the result to an email PNG. Use
+  Codex here only for photoreal/illustrative heroes where brand-system fidelity is not
+  the point.
 
 ## Workflow
 
@@ -155,3 +161,16 @@ TaskOutput(task_id=task, block=True, timeout=300000)
 
 - This skill is intentionally thin. Codex already knows how to do image generation; Claude just needs to invoke it cleanly.
 - On this machine, Codex's built-in image flow writes initial outputs under `~/.codex/generated_images/<session-id>/...` before any copy or move into a project directory.
+- **Known defect:** Codex intermittently letterboxes a dead black/white bar at the bottom of generated images — inspect every output and auto-crop the bar if present before returning the path to the user.
+- **Text-heavy banner work:** for banners where text fidelity matters (brand names, CTAs, precise typesetting), prefer Chrome-headless HTML compositing (Space Grotesk font, feathered photo background, grain overlay) over baked-in AI text. Codex raster output mangles text and logo rendering. Route these to the `claude-design-email-header` skill instead.
+
+## Output verification
+
+After `TaskOutput` returns, always run `ls <reported-path>` to confirm the file exists at the path Codex reported. If the file is missing:
+1. Report Codex's raw output verbatim to the user.
+2. Check `~/.codex/generated_images/` for any output from the session.
+3. Do not claim the image was generated until a real file is confirmed on disk.
+
+## Sync homes
+
+Canonical: ~/code/claude-codex-image-gen-bridge/SKILL.md • Live: ~/.claude/skills/codex-imagegen/SKILL.md. Check diff before editing either.
